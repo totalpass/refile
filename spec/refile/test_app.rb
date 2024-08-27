@@ -7,6 +7,8 @@ require "jquery/rails"
 
 module Refile
   class TestApp < Rails::Application
+    config.load_defaults 6.1
+
     config.middleware.delete "ActionDispatch::Cookies"
     config.middleware.delete "ActionDispatch::Session::CookieStore"
     config.middleware.delete "ActionDispatch::Flash"
@@ -27,22 +29,22 @@ require "capybara/rails"
 require "capybara/rspec"
 require "refile/spec_helper"
 require "refile/active_record_helper"
-require "capybara/poltergeist"
+require 'selenium/webdriver'
 
-if ENV["SAUCE_BROWSER"]
-  Capybara.register_driver :selenium do |app|
-    url = "http://#{ENV["SAUCE_USERNAME"]}:#{ENV["SAUCE_ACCESS_KEY"]}@localhost:4445/wd/hub"
-    capabilities = { browserName: ENV["SAUCE_BROWSER"], version: ENV["SAUCE_VERSION"] }
-    driver = Capybara::Selenium::Driver.new(app, browser: :remote, url: url, desired_capabilities: capabilities)
-    driver.browser.file_detector = ->(args) { args.first if File.exist?(args.first) }
-    driver
-  end
+Capybara.register_driver :headless_chrome do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('headless')
+  options.add_argument('disable-gpu') # Necessário em alguns ambientes
+  options.add_argument('no-sandbox') # Pode ser necessário em ambientes Docker
+  options.add_argument('disable-dev-shm-usage') # Pode ser necessário em ambientes Docker
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :headless_chrome
 
 Capybara.configure do |config|
-  config.server_port = 56_120
+  config.server_port = 56120
 end
 
 module TestAppHelpers
