@@ -7,5 +7,5 @@ services:
     volumes:
       - .:/app
     environment:
-      BUNDLE_GEMFILE: ./gemfiles/Gemfile_Rails_5_2
+      BUNDLE_GEMFILE: ./gemfiles/Gemfile_Rails_6_1
     command: sleep infinity
