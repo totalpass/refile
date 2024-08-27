@@ -1,0 +1,27 @@
+source "https://rubygems.org"
+
+gemspec path: '../'
+
+gem "webmock", "~> 3.13.0"  # Compatível com Rails 6.1
+gem "bundler" # Rails 6.1 geralmente utiliza Bundler 2.x
+gem "rake", "~> 13.0"  # Rake 13 é a versão utilizada no Rails 6.1
+gem "rspec", "~> 3.10"  # Atualizado para ser compatível com Rails 6.1
+gem "rspec-rails", "~> 4.0"  # Compatível com Rails 6.1
+gem "jquery-rails", "~> 4.4"  # Versão recomendada para Rails 6.1
+gem "capybara", "~> 3.35"  # Compatível com Rails 6.1
+gem "aws-sdk-s3", "~> 1.86"  # Compatível com Rails 6.1
+gem "rack-test", "~> 1.1"  # Versão compatível com o Rack utilizado no Rails 6.1
+gem "rails", "~> 6.1"  # Atualizado para Rails 6.1
+gem "sqlite3", "~> 1.4", platforms: [:ruby]  # Versão recomendada para Rails 6.1
+gem "activerecord-jdbcsqlite3-adapter", "~> 61.0", platforms: [:jruby]  # Compatível com ActiveRecord 6.1
+gem "poltergeist", "~> 1.18"  # Última versão disponível, mas considere trocar para outra solução de driver
+gem "yard", "~> 0.9"  # Compatível com Rails 6.1
+gem "rubocop", "~> 1.0"  # Compatível com o estilo do Rails 6.1
+gem "puma", "~> 5.0"  # Compatível com Rails 6.1
+gem "mini_magick", "~> 4.11"  # Compatível com Rails 6.1
+gem "simple_form", "~> 5.1"  # Compatível com Rails 6.1
+gem "i18n", "~> 1.8", "< 2.0"  # Versão compatível com Rails 6.1
+
+gem 'selenium-webdriver'
+gem 'webdrivers' # Opcional, mas útil para gerenciar as versões do ChromeDriver
+gem 'byebug'
