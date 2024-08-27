@@ -1,5 +1,6 @@
 ENV["RACK_ENV"] = "test"
 
+require 'byebug'
 require "refile"
 require "refile/backend_examples"
 require "webmock/rspec"
