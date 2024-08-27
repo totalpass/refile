@@ -1,6 +1,11 @@
 require "active_record"
 
+# Configure I18n
 I18n.enforce_available_locales = true
+I18n.available_locales = [:en]  # Add other locales if needed
+I18n.load_path.clear
+I18n.load_path += Dir[File.join('.', 'config', 'locales', '**', '*.{rb,yml}')]
+I18n.default_locale = :en
 
 ActiveRecord::Base.establish_connection(
   adapter: "sqlite3",
