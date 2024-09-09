@@ -1,4 +1,8 @@
+require:
+  - rubocop-performance
+
 AllCops:
+  TargetRubyVersion: 2.7
   Exclude:
     - 'gemfiles/**/*'
     - 'vendor/**/*'
@@ -31,7 +35,7 @@ Metrics/CyclomaticComplexity:
 Metrics/PerceivedComplexity:
   Enabled: false
 
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
 
 Style/StringLiterals:
@@ -39,6 +43,9 @@ Style/StringLiterals:
 
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
 
 Layout/ClosingParenthesisIndentation:
   Enabled: false
@@ -85,7 +92,7 @@ Lint/EndAlignment:
 Lint/DefEndAlignment:
   Enabled: false
 
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Enabled: false
 
 Style/SpecialGlobalVars:

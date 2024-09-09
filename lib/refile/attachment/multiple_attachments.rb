@@ -30,9 +30,7 @@ module Refile
             cache = cache.reject(&:empty?)
             files = files.compact
 
-            if not append and (!files.empty? or !cache.empty?)
-              send("#{collection_name}=", [])
-            end
+            send("#{collection_name}=", []) if not append and (!files.empty? or !cache.empty?)
 
             collection = send(collection_name)
 

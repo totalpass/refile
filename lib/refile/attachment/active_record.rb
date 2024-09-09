@@ -17,8 +17,8 @@ module Refile
           if send(attacher).present?
             send(attacher).valid?
             errors = send(attacher).errors
-            errors.each do |error|
-              self.errors.add(name, *error)
+            errors.each do |type, error|
+              self.errors.add(name, type, **error.to_h)
             end
           end
         end
@@ -80,7 +80,7 @@ module Refile
         association = reflect_on_association(association_name)
         attachment_pluralized = attachment.to_s.pluralize
         name = "#{association_name}_#{attachment_pluralized}"
-        collection_class = association && association.klass
+        collection_class = association&.klass
 
         options = {
           collection_class: collection_class,

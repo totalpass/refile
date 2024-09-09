@@ -29,7 +29,7 @@ module Refile
           now.strftime("%F %T %z"),
           env["REQUEST_METHOD"],
           env["PATH_INFO"],
-          env["QUERY_STRING"].empty? ? "" : "?" + env["QUERY_STRING"],
+          env["QUERY_STRING"].empty? ? "" : "?#{env["QUERY_STRING"]}",
           status.to_s[0..3],
           (now - began_at) * 1000
         )
