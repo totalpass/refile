@@ -171,6 +171,7 @@ module Refile
 
     def write(column, value, strict = false)
       return if record.frozen?
+
       m = "#{name}_#{column}="
       record.send(m, value) if strict or record.respond_to?(m)
     end

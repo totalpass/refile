@@ -104,6 +104,7 @@ module Refile
       # @return [void]
       def clear!(confirm = nil)
         raise Refile::Confirm unless confirm == :confirm
+
         FileUtils.rm_rf(@directory)
         FileUtils.mkdir_p(@directory)
       end

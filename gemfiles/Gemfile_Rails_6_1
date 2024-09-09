@@ -17,6 +17,7 @@ gem "activerecord-jdbcsqlite3-adapter", "~> 61.0", platforms: [:jruby]
 gem "poltergeist", "~> 1.18"
 gem "yard", "~> 0.9"
 gem "rubocop", "~> 1.0"
+gem 'rubocop-performance'
 gem "puma", "~> 5.0"
 gem "mini_magick", "~> 4.11"
 gem "simple_form", "~> 5.1" 
